@@ -1,5 +1,6 @@
 package br.com.hdb.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +15,7 @@ name = "geradordeid",
 table = "sql_sequence",
 pkColumnName = "name",
 valueColumnName= "seq",
-pkColumnValue = "pessoa_id",
+pkColumnValue = "prontuarios",
 initialValue = 1 ,
 allocationSize= 1)
 
@@ -22,48 +23,64 @@ public class Prontuario {
  
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE, generator="geradordeid")
-
+	private int id;
 	
-	private int Num_Prontuario;
-	private String DataAbertura_Prontuario;
-	private String NomePaciente_Prontuario;
+	@Column(name="Num_Prontuario")
+	private int num_pront;
+	
+	@Column(name="DataAbertura_Prontuario")
+	private String dt_pront;
+	
+	@Column(name = "NomePaciente_Prontuario")
+	private String nm_pront;
 	
 	public Prontuario() {
 		
 	}
 	
-	
-	public Prontuario(int nm_pront, String DataAbertura_Prontuario, String NomePaciente_Prontuario) {
+	public Prontuario(int numero,String data, String nome)
+	{
 		super();
-		this.Num_Prontuario = nm_pront;
-		this.DataAbertura_Prontuario = DataAbertura_Prontuario;
-		this.NomePaciente_Prontuario = NomePaciente_Prontuario;
+		this.num_pront = numero;
+		this.dt_pront = data;
+		this.nm_pront = nome; 
+	}
+	
+	public int getId() {
+		return id;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+	public int getNum_pront() {
+		return num_pront;
+	}
 
-	public int getNum_Prontuario() {
-		return Num_Prontuario;
+	public void setNum_pront(int num_pront) {
+		this.num_pront = num_pront;
 	}
-	public void setNum_Prontuario(int Num_Prontuario) {
-		this.Num_Prontuario = Num_Prontuario;
+
+	public String getDt_pront() {
+		return dt_pront;
 	}
-	public String getDataAbertura_Prontuario() {
-		return DataAbertura_Prontuario;
+
+	public void setDt_pront(String dt_pront) {
+		this.dt_pront = dt_pront;
 	}
-	public void setDataAbertura_Prontuario(String DataAbertura_Prontuario) {
-		this.DataAbertura_Prontuario = DataAbertura_Prontuario;
+
+	public String getNm_pront() {
+		return nm_pront;
 	}
-	public String getNomePaciente_Prontuario() {
-		return NomePaciente_Prontuario;
-	}
-	public void setNomePaciente_Prontuario(String NomePaciente_Prontuario) {
-		this.NomePaciente_Prontuario = NomePaciente_Prontuario;
+
+	public void setNm_pront(String nm_pront) {
+		this.nm_pront = nm_pront;
 	}
 	
 	@Override
 	public String toString() {
-		return "Número do Prontuario: " + Num_Prontuario 
-				+ "\n" + " Data de abertura do prontuario: " + DataAbertura_Prontuario 
-				+ "\n" + " Nome do Paciente: " + NomePaciente_Prontuario ;
+		return "Numero de Prontuario: " + nm_pront + " Data de abertura do prontuario: " + dt_pront + " Nome do paciente : " + nm_pront;
 	}
 }
+
+	

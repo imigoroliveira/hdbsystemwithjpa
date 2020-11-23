@@ -5,9 +5,9 @@ import java.util.List;
 public interface DAO<T> {
 	
 T salvar(T entidade);
+List <T> listar();
+T buscarPorId(Integer id);
 T atualizar(T entidade);
-T buscarporCod(Integer Cod_Prontuario);
-List<T> listar();
-void apagar(Integer Cod_Prontuario);
+void apagar(Integer id);
 
 }
